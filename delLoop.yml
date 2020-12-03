@@ -1,11 +1,11 @@
 ---
 
-- name: delete the 2 Loopback on equipement
+- name: delete all the specified interfaces on equipement
   hosts: all
   connection: ansible.netcommon.network_cli
   tasks:
     - name: delete loopback shell
-      with_items: "{{local_loopback}}"
+      with_items: "{{local_interface}}"
       cisco.nxos.nxos_interface:
         name: "{{item.name}}"
         state: absent
