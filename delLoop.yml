@@ -6,6 +6,6 @@
   tasks:
     - name: delete loopback shell
       with_items: "{{local_interface}}"
-      cisco.nxos.nxos_interface:
+      cisco.nxos.nxos_interfaces:
         name: "{{item.name}}"
-        state: absent
+        state: deleted
