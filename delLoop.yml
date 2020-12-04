@@ -4,8 +4,8 @@
   hosts: all
   connection: ansible.netcommon.network_cli
   tasks:
-- name: Delete or return interface parameters to default settings
-  cisco.nxos.nxos_interfaces:
-    config:
-    - name: Loopback1
-    state: deleted
+    - name: Delete or return interface parameters to default settings
+      cisco.nxos.nxos_interfaces:
+        config:
+        - name: Loopback1
+        state: deleted
