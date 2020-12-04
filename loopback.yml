@@ -1,23 +1,23 @@
 ---
 
-- name: Create 2 Loopback on equipement
+- name: configure all the specified interfaces on equipement
   hosts: all
   connection: ansible.netcommon.network_cli
   tasks:
-    - name: Replaces device configuration of listed interfaces with provided configuration
+    - name: config interface
       with_items: "{{local_interface}}"
       cisco.nxos.nxos_interfaces:
-       config:
-       - name: "{{item.name}}"
-         description: "{{item.desc}}"
-         enabled: true
-         mode: layer3
-       state: replaced
-
-     - name: Replace device configuration of specified L3 interfaces with provided configuration.
-       cisco.nxos.nxos_l3_interfaces:
         config:
-         - name: "{{item.name}}"
-         ipv4:
-         - address: "{{item.ip_address}}/{{item.prefix}}"
-       state: replaced
+        - name: "{{item.name}}"
+          description: "{{item.desc}}"
+          enabled: true
+          mode: layer3
+        state: replaced
+    - name: config L3 informations
+      with_items: "{{local_interface}}"
+      cisco.nxos.nxos_l3_interfaces:
+        config:
+        - name: "{{item.name}}"
+          ipv4:
+           - address: "{{item.ip_address}}/{{item.prefix}}"
+        state: replaced
