@@ -4,7 +4,20 @@ local_interface:
    desc: Ansible created Loopback1
    ip_address: 172.16.30.1
    prefix: 32
+   area: 0
  - name: Loopback2
    desc: Ansible created Loopback2
    ip_address: 172.16.30.11
    prefix: 32
+   area: 0
+local_interfaceE:
+ - name: Ethernet1/2
+   desc: vers Nexus 2
+   ip_address: 10.10.23.1
+   prefix: 30
+   area: 0
+ - name: Ethernet1/1
+   desc: vers Nexus 1
+   ip_address: 10.10.13.2
+   prefix: 30
+   area: 0
