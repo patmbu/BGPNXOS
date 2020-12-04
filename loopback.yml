@@ -30,5 +30,5 @@
             processes:
             - process_id: "1"
               area:
-                area_id: "{{item.area}}"
+                area_id: "{{item.area}}.{{item.area}}.{{item.area}}.{{item.area}}"
         state: replaced
