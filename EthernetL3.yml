@@ -21,3 +21,15 @@
           ipv4:
            - address: "{{item.ip_address}}/{{item.prefix}}"
         state: replaced
+    - name: config OSPF informations
+      with_items: "{{local_interfaceE}}"
+      cisco.nxos.nxos_ospf_interfaces:
+        config:
+        - name: "{{item.name}}"
+          address_family:
+          - afi: ipv4
+            processes:
+            - process_id: "1"
+              area:
+                area_id: "{{item.area}}"
+        state: replaced
