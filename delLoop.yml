@@ -5,7 +5,14 @@
   connection: ansible.netcommon.network_cli
   tasks:
     - name: Delete or return interface parameters to default settings
+      with_items: "{{local_interface}}"
       cisco.nxos.nxos_interfaces:
         config:
-        - name: Loopback1
+        - name: "{{item.name}}"
+        state: deleted
+    - name: delete L3 informations
+      with_items: "{{local_interface}}"
+      cisco.nxos.nxos_l3_interfaces:
+        config:
+        - name: "{{item.name}}"
         state: deleted
