@@ -5,7 +5,7 @@
   connection: ansible.netcommon.network_cli
   tasks:
     - name: config interface
-      with_items: "{{local_interface}}"
+      with_items: "{{local_interfaceE}}"
       cisco.nxos.nxos_interfaces:
         config:
         - name: "{{item.name}}"
@@ -14,7 +14,7 @@
           mode: layer3
         state: replaced
     - name: config L3 informations
-      with_items: "{{local_interface}}"
+      with_items: "{{local_interfaceE}}"
       cisco.nxos.nxos_l3_interfaces:
         config:
         - name: "{{item.name}}"
